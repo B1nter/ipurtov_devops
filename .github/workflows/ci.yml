@@ -36,3 +36,14 @@ jobs:
           name: my-artifact  
           path: ${{ env.app_name }}**
           retention-days: 5
+  telegram:
+    name: Send notification to Telegram
+    needs: build_matrix
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: appleboy/telegram-action@master
+        with:
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          message: |
