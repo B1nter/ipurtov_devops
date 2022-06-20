@@ -47,3 +47,5 @@ jobs:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           message: |
+            new commit!
+            commit status ${{ needs.build_matrix.result }}
